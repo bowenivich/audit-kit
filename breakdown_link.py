@@ -66,7 +66,10 @@ def File_Row_Columns():
 	Sheet = ExcelFile.sheet_by_name(SheetName)
 	i = StartCellRow_N
 	for j in range(StartCellColumn_N,EndCellColumn_N):
-		rows.append(Sheet.cell_value(i,j))
+		if StartCellColumn_N <= 25:
+			rows.append("='" + ImportFileDirectory + "[" + ImportFileName + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
+		else:
+			rows.append("='" + ImportFileDirectory + "[" + ImportFileName + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
 
 def File_Rows_Column():
 	global rows
@@ -74,7 +77,10 @@ def File_Rows_Column():
 	Sheet = ExcelFile.sheet_by_name(SheetName)
 	j = StartCellColumn_N
 	for i in range(StartCellRow_N,EndCellRow_N):
-		rows.append([Sheet.cell_value(i,j)])
+		if StartCellColumn_N <= 25:
+			rows.append(["='" + ImportFileDirectory + "[" + ImportFileName + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1)])
+		else:
+			rows.append(["='" + ImportFileDirectory + "[" + ImportFileName + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1)])
 
 def File_Rows_Columns():
 	global rows
@@ -83,7 +89,10 @@ def File_Rows_Columns():
 	for i in range(StartCellRow_N,EndCellRow_N):
 		row = []
 		for j in range(StartCellColumn_N,EndCellColumn_N):
-			row.append(Sheet.cell_value(i,j))
+			if StartCellColumn_N <= 25:
+				row.append("='" + ImportFileDirectory + "[" + ImportFileName + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
+			else:
+				row.append("='" + ImportFileDirectory + "[" + ImportFileName + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
 		rows.append(row)
 
 def Files_Row_Column():
@@ -95,7 +104,10 @@ def Files_Row_Column():
 		Sheet = ExcelFile.sheet_by_name(SheetName)
 		i = StartCellRow_N
 		j = StartCellColumn_N
-		rows.append([FileNameList[k],Sheet.cell_value(i,j)])
+		if StartCellColumn_N <= 25:
+			rows.append([FileNameList[k],"='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1)])
+		else:
+			rows.append([FileNameList[k],"='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1)])
 
 def Files_Row_Columns():
 	global rows
@@ -106,7 +118,10 @@ def Files_Row_Columns():
 		Sheet = ExcelFile.sheet_by_name(SheetName)
 		i = StartCellRow_N
 		for j in range(StartCellColumn_N,EndCellColumn_N):
-			rows.append([FileNameList[k],Sheet.cell_value(i,j)])
+			if StartCellColumn_N <= 25:
+				rows.append([FileNameList[k],"='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1)])
+			else:
+				rows.append([FileNameList[k],"='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1)])
 
 def Files_Rows_Column():
 	global rows
@@ -118,12 +133,15 @@ def Files_Rows_Column():
 		j = StartCellColumn_N
 		row = [FileNameList[k]]
 		for i in range(StartCellRow_N,EndCellRow_N):
-			row.append(Sheet.cell_value(i,j))
+			if StartCellColumn_N <= 25:
+				row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
+			else:
+				row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
 		rows.append(row)
 
 def Files_Rows_Columns():
 	global rows
-	FileNameList = listdir(ImportFileDirectory)
+	FileNameList = test
 	CheckWrongItem(FileNameList)
 	for k in range(0,len(FileNameList)):
 		ExcelFile = xlrd.open_workbook(ImportFilePath + FileNameList[k])
@@ -131,7 +149,10 @@ def Files_Rows_Columns():
 		for i in range(StartCellRow_N,EndCellRow_N):
 			row = [FileNameList[k][:-5]]
 			for j in range(StartCellColumn_N,EndCellColumn_N):
-				row.append(Sheet.cell_value(i,j))
+				if StartCellColumn_N <= 25:
+					row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
+				else:
+					row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
 			rows.append(row)
 
 def CheckWrongItem(Item):
