@@ -1,6 +1,6 @@
 # Audit Kit
 
-由于通过VBA爬客编表的效率较低，导致公司电脑在爬表过程中死机而影响工作，此 audit_kit Python 版本根据`ABASToolkit.xlam`爬表思路编写。慢慢更新，如有 Python 脚本的需求以及改进意见，请联系 [@alfredbowenfeng](https://github.com/alfredbowenfeng)，邮箱是 alfred.bowenfeng@gmail.com 。
+由于通过VBA爬客编表的效率较低，导致公司电脑在爬表过程中死机而影响工作，此 audit_kit Python 版本根据`ABASToolkit.xlam`爬表思路编写。慢慢更新，如有 Python 脚本的需求 :+1: 以及改进意见 :-1:，请联系 [@alfredbowenfeng](https://github.com/alfredbowenfeng)，邮箱是 alfred.bowenfeng@gmail.com 。
 
 ## Table of Contents
 - [Python 的安装及配置](#installation)
