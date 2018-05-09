@@ -28,7 +28,7 @@ StartCellRow_N = int(StartCellRow_N) - 1
 EndCellColumn = str(input("Please enter End Cell Column: (eg. E) "))
 if len(EndCellColumn) == 1:
 	EndCellColumn_N = CellColumnPool.index(EndCellColumn) + 1
-elif len(StartCellColumn) == 2:
+elif len(EndCellColumn) == 2:
 	EndCellColumn_N = (CellColumnPool.index(EndCellColumn[0]) + 1) * 26 + CellColumnPool.index(EndCellColumn[1]) + 1
 else:
 	print("Not Supported")
@@ -127,7 +127,7 @@ def Files_Row_Columns():
 			else:
 				row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
 		rows.append(row)
-		
+
 def Files_Rows_Column():
 	global rows
 	FileNameList = listdir(ImportFileDirectory)

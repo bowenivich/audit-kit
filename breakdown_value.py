@@ -28,7 +28,7 @@ StartCellRow_N = int(StartCellRow_N) - 1
 EndCellColumn = str(input("Please enter End Cell Column: (eg. E) "))
 if len(EndCellColumn) == 1:
 	EndCellColumn_N = CellColumnPool.index(EndCellColumn) + 1
-elif len(StartCellColumn) == 2:
+elif len(EndCellColumn) == 2:
 	EndCellColumn_N = (CellColumnPool.index(EndCellColumn[0]) + 1) * 26 + CellColumnPool.index(EndCellColumn[1]) + 1
 else:
 	print("Not Supported")
