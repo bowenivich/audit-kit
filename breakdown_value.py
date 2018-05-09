@@ -23,7 +23,8 @@ elif len(StartCellColumn) == 2:
 	StartCellColumn_N = (CellColumnPool.index(StartCellColumn[0]) + 1) * 26 + CellColumnPool.index(StartCellColumn[1])
 else:
 	print("Not Supported")
-StartCellRow_N = int(input("Please enter Start Cell Row: (eg. 1) ")) - 1
+StartCellRow_N = input("Please enter Start Cell Row: (eg. 1) ")
+StartCellRow_N = int(StartCellRow_N) - 1
 EndCellColumn = str(input("Please enter End Cell Column: (eg. E) "))
 if len(EndCellColumn) == 1:
 	EndCellColumn_N = CellColumnPool.index(EndCellColumn) + 1
@@ -31,16 +32,17 @@ elif len(StartCellColumn) == 2:
 	EndCellColumn_N = (CellColumnPool.index(EndCellColumn[0]) + 1) * 26 + CellColumnPool.index(EndCellColumn[1]) + 1
 else:
 	print("Not Supported")
-EndCellRow_N = int(input("Please enter End Cell Row: (eg. 99) "))
+EndCellRow_N = input("Please enter End Cell Row: (eg. 99) ")
+EndCellRow_N = int(EndCellRow_N)
 ExportFilePath = input("Please enter Export File Path: (Directory and Name, Ending with .xlsx) ")
 
 # define functions
 def Selection():
 	if Files == 0:
-		if StartCellRow_N == EndCellRow_N:
+		if StartCellRow_N + 1 == EndCellRow_N:
 			if StartCellColumn == EndCellColumn:
 				print("Are you kidding me??? Just for fun???")
-				os._exit()
+				exit()
 			else:
 				File_Row_Columns()
 		else:
@@ -49,7 +51,7 @@ def Selection():
 			else:
 				File_Rows_Columns()
 	else:
-		if StartCellRow_N == EndCellRow_N:
+		if StartCellRow_N + 1 == EndCellRow_N:
 			if StartCellColumn == EndCellColumn:
 				Files_Row_Column()
 			else:
@@ -67,6 +69,7 @@ def File_Row_Columns():
 	i = StartCellRow_N
 	for j in range(StartCellColumn_N,EndCellColumn_N):
 		rows.append(Sheet.cell_value(i,j))
+	rows = [rows]
 
 def File_Rows_Column():
 	global rows
@@ -105,8 +108,10 @@ def Files_Row_Columns():
 		ExcelFile = xlrd.open_workbook(ImportFilePath + FileNameList[k])
 		Sheet = ExcelFile.sheet_by_name(SheetName)
 		i = StartCellRow_N
+		row = [FileNameList[k]]
 		for j in range(StartCellColumn_N,EndCellColumn_N):
-			rows.append([FileNameList[k],Sheet.cell_value(i,j)])
+			row.append(Sheet.cell_value(i,j))
+		rows.append(row)
 
 def Files_Rows_Column():
 	global rows

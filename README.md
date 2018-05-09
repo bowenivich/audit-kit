@@ -2,6 +2,8 @@
 
 由于通过VBA爬客编表的效率较低，导致公司电脑在爬表过程中死机而影响工作，此 audit_kit Python 版本根据`ABASToolkit.xlam`爬表思路编写。慢慢更新，如有 Python 脚本的需求 :+1: 以及改进意见 :-1:，请联系作者 [@alfredbowenfeng](https://github.com/alfredbowenfeng)，邮箱是 alfred.bowenfeng@gmail.com。
 
+使用 Python 初始配置可能看起来比较麻烦，实际上只要一次性花10分钟左右的时间安装、配置、安装包，以后跑表的时间将大大降低。
+
 ## Table of Contents
 - [Python 的配置](#installation)
 - [Breakdown by Value](#breakdown_value)
@@ -14,7 +16,7 @@
 * 请在[官网](https://www.python.org/downloads/)下载，黄色图标 Download Python 3.6.5。
 
 #### Windows 10 安装与环境搭建
-* 请在C盘新建名为"Python"的文件夹，以管理员身份打开 Python 安装软件，通过自定义安装，将 Python 安装于"C:\Python"目录下。
+* 请在C盘新建名为"Python"的文件夹，以管理员身份打开 Python 安装软件，通过自定义安装，将 Python 安装于"C:\Python"目录下。（如遇到安装原因，选择"Client Engagement"或其他任意原因即可）
 * 右键点击"计算机"，点击"属性"，点击"高级系统设置"。
 * 此时看到"用户变量"与"系统变量"，选择"系统变量"下的"Path"，点击编辑。
 * 点击"新增"，输入"C:\Python"，确定。
@@ -36,10 +38,8 @@
 #### 输入端路径
 * 第一步：输入文件（们）所在目录，可直接从窗口中复制粘贴，务必添加"\\"并以"\\"结尾，例如"C:\Audit\Engagement\\"。
 * 第二步：输入文件名称，原则为"1 or All"。若直接回车，脚本选择目录下所有文件，筛选并爬取后缀为".xlsx"的文件。
-* 注：若经常使用同一路径，则可以编辑文件，修改第10行。
-
+* 注：若经常使用同一路径，则可以编辑.py文件，修改第10行。
 ~~ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))~~
-
 ImportFileDirectory = "C:\Audit\Engagement\\" （举例）
 
 #### 定位
@@ -61,10 +61,8 @@ ImportFileDirectory = "C:\Audit\Engagement\\" （举例）
 #### 输入端路径
 * 第一步：输入文件（们）所在目录，可直接从窗口中复制粘贴，务必添加"\\"并以"\\"结尾，例如"C:\Audit\Engagement\\"。
 * 第二步：输入文件名称，原则为"1 or All"。若直接回车，脚本选择目录下所有文件，筛选并爬取后缀为".xlsx"的文件。
-* 注：若经常使用同一路径，则可以编辑文件，修改第10行。
-
+* 注：若经常使用同一路径，则可以编辑.py文件，修改第10行。
 ~~ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))~~
-
 ImportFileDirectory = "C:\Audit\Engagement\\" （举例）
 
 #### 定位
