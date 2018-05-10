@@ -81,7 +81,7 @@ ImportFileDirectory = "C:\Audit\Engagement\\" （举例）
 * 第八步：输入"输出路径"，务必以".xlsx"结尾，例如"C:\Audit\Engagement\breakdown.xlsx"。
 * 注1：Python 不像 VBA 可直接输入"A1"或"AH1001"来开始与结尾，所以需将字母与数字分开。
 * 注2：此脚本已默认utf-8编码，应该来说运行后中文处理不会存在乱码，若存在乱码请联系作者。
-* 注3：此脚本仅建立 link ，如需爬取 link 请使用 [Breakdown by Value](#breakdown_value)或[Breakdown by Value with Pandas](#breakdown_value_pandas)。
+* 注3：此脚本仅建立 link ，如需爬取 link 请使用 [Breakdown by Value](#breakdown_value) 或 [Breakdown by Value with Pandas](#breakdown_value_pandas)。
 * 注4：通过 Python 处理的 "Paste Link" 回到 Excel 时可能需要更新数值，请选择"更新"。
 
 <a name="breakdown_value_pandas"></a>
