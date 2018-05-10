@@ -31,7 +31,7 @@ elif len(StartCellColumn) == 1:
 	else:
 		print("Not Supported! ")
 elif len(StartCellColumn) == 2:
-	AllColumns= 0
+	AllColumns = 0
 	StartCellColumn_N = (CellColumnPool.index(StartCellColumn[0]) + 1) * 26 + CellColumnPool.index(StartCellColumn[1])
 	EndCellColumn = str(input("Please enter End Cell Column: (eg. E) "))
 	if len(EndCellColumn) == 1:
@@ -65,7 +65,9 @@ def Selection():
 			else:
 				File_Rows_Columns()
 	else:
-		if StartCellRow_N + 1 == EndCellRow_N:
+		if AllColumns == 1:
+			Files_Row_AllColumns()
+		elif StartCellRow_N + 1 == EndCellRow_N:
 			if StartCellColumn == EndCellColumn:
 				Files_Row_Column()
 			else:
@@ -82,7 +84,7 @@ def File_Row_AllColumns(): # checked
 	width = int(dfrm.size/len(dfrm))
 	height = len(dfrm)
 	if EndCellRow_N <= height:
-		train = np.array(dfrm.ix[StartCellRow_N:EndCellRow_N,StartCellColumn_N:width])
+		train = np.array(dfrm.ix[StartCellRow_N:EndCellRow_N,0:width])
 	else:
 		train = np.array(dfrm.ix[StartCellRow_N:height,0:width])
 	row = train.tolist()
@@ -151,6 +153,23 @@ def File_Rows_Columns(): # checked
 				row[i].append("")
 	for i in range(0,len(row)):
 		rows.append(row[i])
+
+def Files_Row_AllColumns(): #checked
+	global rows
+	FileNameList = listdir(ImportFileDirectory)
+	CheckWrongItem(FileNameList)
+	for k in range(0,len(FileNameList)):
+		row = [FileNameList[k]]
+		dfrm = pd.read_excel(ImportFilePath + FileNameList[k],SheetName)
+		width = int(dfrm.size/len(dfrm))
+		height = len(dfrm)
+		if EndCellRow_N <= height:
+			train = np.array(dfrm.ix[StartCellRow_N:EndCellRow_N,0:width])
+		else:
+			train = np.array(dfrm.ix[StartCellRow_N:height,0:width])
+		row = train.tolist()
+		for i in range(0,len(row)):
+			rows.append(row[i])
 
 def Files_Row_Column(): # checked
 	global rows
