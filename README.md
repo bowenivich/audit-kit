@@ -25,8 +25,8 @@
 #### 使用 cmd 与 pip 命令安装包
 * Python 处理 Excel 文件需要一些功能包，所以用系统自带的 cmd 安装。
 * 按"START + R"搜索 cmd 并打开。
-* 输入"pip install xlrd"并回车，等待安装完成。
-* 输入"pip install xlsxwriter"并回车，等待安装完成。
+* 输入"pip install" + "安装包名称" 并回车，等待安装完成。
+* 例如输入"pip install pandas"并回车，等待安装 pandas包 完成。
 
 #### 脚本的使用
 * Python 的脚本是后缀为".py"的文件，待 Python 安装完成后，用 IDLE 打开文件。
