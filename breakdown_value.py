@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
-import xlrd, xlsxwriter
+import xlrd, xlsxwriter, csv
 from os import listdir
 from multiprocessing import Process
-import csv
 
 # define variables
 CellColumnPool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'

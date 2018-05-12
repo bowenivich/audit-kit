@@ -39,11 +39,11 @@
 #### 输入端路径
 * 第一步：输入文件（们）所在目录，可直接从窗口中复制粘贴，务必添加"\\"并以"\\"结尾，例如"C:\Audit\Engagement\\"。
 * 第二步：输入文件名称，原则为"1 or All"。若直接回车，脚本选择目录下所有文件，筛选并爬取后缀为".xlsx"的文件。
-* 注：若经常使用同一路径，则可以编辑.py文件，修改第10行。
+* 注：若经常使用同一路径，则可以编辑.py文件，例如修改第10行：
 
 ~~ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))~~
 
-ImportFileDirectory = "C:\Audit\Engagement\\" （举例）
+ImportFileDirectory = 'C:\Audit\Engagement\\' （举例）
 
 #### 定位
 * 第三步：输入 worksheet 的名字，例如"Sheet1"，请精准输入。
@@ -64,11 +64,11 @@ ImportFileDirectory = "C:\Audit\Engagement\\" （举例）
 #### 输入端路径
 * 第一步：输入文件（们）所在目录，可直接从窗口中复制粘贴，务必添加"\\"并以"\\"结尾，例如"C:\Audit\Engagement\\"。
 * 第二步：输入文件名称，原则为"1 or All"。若直接回车，脚本选择目录下所有文件，筛选并爬取后缀为".xlsx"的文件。
-* 注：若经常使用同一路径，则可以编辑.py文件，修改第10行。
+* 注：若经常使用同一路径，则可以编辑.py文件，例如修改第10行：
 
 ~~ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))~~
 
-ImportFileDirectory = "C:\Audit\Engagement\\" （举例）
+ImportFileDirectory = 'C:\Audit\Engagement\\' （举例）
 
 #### 定位
 * 第三步：输入 worksheet 的名字，例如"Sheet1"，请精准输入。
@@ -90,11 +90,11 @@ ImportFileDirectory = "C:\Audit\Engagement\\" （举例）
 #### 输入端路径
 * 第一步：输入文件（们）所在目录，可直接从窗口中复制粘贴，务必添加"\\"并以"\\"结尾，例如"C:\Audit\Engagement\\"。
 * 第二步：输入文件名称，原则为"1 or All"。若直接回车，脚本选择目录下所有文件，筛选并爬取后缀为".xlsx"的文件。
-* 注：若经常使用同一路径，则可以编辑.py文件，修改第10行。
+* 注：若经常使用同一路径，则可以编辑.py文件，例如修改第10行：
 
 ~~ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))~~
 
-ImportFileDirectory = "C:\Audit\Engagement\\" （举例）
+ImportFileDirectory = 'C:\Audit\Engagement\\' （举例）
 
 #### 定位
 * 第三步：输入 worksheet 的名字，例如"Sheet1"，请精准输入。
