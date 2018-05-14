@@ -5,11 +5,12 @@ from multiprocessing import Process
 
 # define variables
 CellColumnPool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-rows = []
 
 # import information
-ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))
-SheetName = str(input('Please enter Sheet Name: (eg. Sheet1) '))
+# ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))
+ImportFileDirectory = '/Users/bowenfeng/Desktop/PBC/'
+# SheetName = str(input('Please enter Sheet Name: (eg. Sheet1) '))
+SheetName = 'E1_应收账款'
 StartCellColumn = str(input('Please enter Start Cell Column: (eg. A) '))
 if len(StartCellColumn) == 1:
 	StartCellColumn_N = CellColumnPool.index(StartCellColumn)
@@ -28,8 +29,10 @@ else:
 	print('Not Supported')
 EndCellRow_N = input('Please enter End Cell Row: (eg. 99) ')
 EndCellRow_N = int(EndCellRow_N)
-TransitionDirectory = input(r'''Please enter Transition Directory: (eg. "C:\Users\Alfred.Feng\Desktop\Transition\") ''')
-ExportFilePath = input('Please enter Export File Path: (Directory and Name, Ending with .xlsx) ')
+# TransitionDirectory = input(r'''Please enter Transition Directory: (eg. "C:\Users\Alfred.Feng\Desktop\Transition\") ''')
+TransitionDirectory = '/Users/bowenfeng/Desktop/transition/'
+# ExportFilePath = input('Please enter Export File Path: (Directory and Name, Ending with .xlsx) ')
+ExportFilePath = '/Users/bowenfeng/Desktop/result.xlsx'
 
 # define functions
 def Selection():
@@ -37,24 +40,35 @@ def Selection():
 	FileNameList = listdir(ImportFileDirectory)
 	CheckWrongItem(FileNameList)
 
+	processList=[]
+
 	if StartCellRow_N + 1 == EndCellRow_N:
 		if StartCellColumn == EndCellColumn:
 			for f in FileNameList:
 				p = Process(target=Files_Row_Column, args=(f, ImportFileDirectory, SheetName, StartCellRow_N, StartCellColumn_N))
+				processList.append(p)
 				p.start()
 		else:
 			for f in FileNameList:
 				p = Process(target=Files_Row_Columns, args=(f, ImportFileDirectory, SheetName, StartCellRow_N, StartCellColumn_N, EndCellColumn_N))
+				processList.append(p)
 				p.start()
 	else:
 		if StartCellColumn == EndCellColumn:
 			for f in FileNameList:
 				p = Process(target=Files_Rows_Column, args=(f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, StartCellColumn_N))
+				processList.append(p)
 				p.start()
 		else:
 			for f in FileNameList:
 				p = Process(target=Files_Rows_Columns, args=(f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, StartCellColumn_N, EndCellColumn_N))
+				processList.append(p)
 				p.start()
+
+	for p in processList:
+		p.join()
+
+	print('XXXXX')
 
 def Files_Row_Column(f, ImportFileDirectory, SheetName, i, j):
 	result = []
@@ -86,11 +100,11 @@ def Files_Rows_Column(f, ImportFileDirectory, SheetName, StartCellRow_N, EndCell
 		spamwriter.writerow(result)	
 
 def Files_Rows_Columns(f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, StartCellColumn_N, EndCellColumn_N):
-	row = []
 	result = []
-	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f)
+	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f, encoding_override='utf-8')
 	Sheet = ExcelFile.sheet_by_name(SheetName)
 	for Row in range(StartCellRow_N, EndCellRow_N):
+		row = []
 		for Column in range(StartCellColumn_N, EndCellColumn_N):
 			row.append(Sheet.cell_value(Row, Column))
 		result.append(row)
@@ -98,7 +112,6 @@ def Files_Rows_Columns(f, ImportFileDirectory, SheetName, StartCellRow_N, EndCel
 		spamwriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
 		for i in range(0, len(result)):
 			spamwriter.writerow(result[i])
-	print(f)
 
 def CheckWrongItem(Item):
 	WrongItem = []
