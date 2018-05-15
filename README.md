@@ -42,7 +42,7 @@
 
 ~~ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))~~
 
-ImportFileDirectory = 'C:\Audit\Engagement\\' （举例）
+ImportFileDirectory = r'C:\Audit\Engagement\' （举例）
 
 #### 定位
 * 第三步：输入 worksheet 的名字，例如"Sheet1"，请精准输入。
@@ -67,7 +67,7 @@ ImportFileDirectory = 'C:\Audit\Engagement\\' （举例）
 
 ~~ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))~~
 
-ImportFileDirectory = 'C:\Audit\Engagement\\' （举例）
+ImportFileDirectory = r'C:\Audit\Engagement\' （举例）
 
 #### 定位
 * 第三步：输入 worksheet 的名字，例如"Sheet1"，请精准输入。
