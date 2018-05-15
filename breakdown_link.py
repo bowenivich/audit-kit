@@ -103,15 +103,15 @@ def CheckWrongItem(Item):
 			pass
 		else:
 			WrongItem.append(p)
-	for q in range(0,len(WrongItem)):
+	for q in range(0, len(WrongItem)):
 		Item.remove(Item[q])
 
 def ExportExcel(Breakdown):
 	workbook = xlsxwriter.Workbook(ExportFilePath)
 	worksheet = workbook.add_worksheet()
-	for m in range(0,len(Breakdown)):
-		for n in range(0,len(Breakdown[m])):
-			worksheet.write(m,n,Breakdown[m][n])
+	for m in range(0, len(Breakdown)):
+		for n in range(0, len(Breakdown[m])):
+			worksheet.write(m, n, Breakdown[m][n])
 	workbook.close()
 
 # body
