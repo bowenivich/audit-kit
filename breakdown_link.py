@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-import xlrd,xlsxwriter
+import xlrd, xlsxwriter
 from os import listdir
 
 # define variables
@@ -46,59 +46,59 @@ def Files_Row_Column():
 	global rows
 	FileNameList = listdir(ImportFileDirectory)
 	CheckWrongItem(FileNameList)
-	for k in range(0,len(FileNameList)):
+	for f in range(0, FileNameList):
 		i = StartCellRow_N
 		j = StartCellColumn_N
 		if StartCellColumn_N <= 25:
-			rows.append([FileNameList[k],"='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1)])
+			rows.append([f[:-5], "='" + ImportFileDirectory + "[" + f + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1)])
 		else:
-			rows.append([FileNameList[k],"='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1)])
+			rows.append([f[:-5], "='" + ImportFileDirectory + "[" + f + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1)])
 
 def Files_Row_Columns():
 	global rows
 	FileNameList = listdir(ImportFileDirectory)
 	CheckWrongItem(FileNameList)
-	for k in range(0,len(FileNameList)):
+	for f in range(0, FileNameList):
 		i = StartCellRow_N
-		row = [FileNameList[k]]
-		for j in range(StartCellColumn_N,EndCellColumn_N):
+		row = [f:[-5]]
+		for j in range(StartCellColumn_N, EndCellColumn_N):
 			if StartCellColumn_N <= 25:
-				row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
+				row.append("='" + ImportFileDirectory + "[" + f + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
 			else:
-				row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
+				row.append("='" + ImportFileDirectory + "[" + f + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
 		rows.append(row)
 
 def Files_Rows_Column():
 	global rows
 	FileNameList = listdir(ImportFileDirectory)
 	CheckWrongItem(FileNameList)
-	for k in range(0,len(FileNameList)):
+	for k in range(0, len(FileNameList)):
 		j = StartCellColumn_N
-		row = [FileNameList[k]]
-		for i in range(StartCellRow_N,EndCellRow_N):
+		row = [f[:-5]]
+		for i in range(StartCellRow_N, EndCellRow_N):
 			if StartCellColumn_N <= 25:
-				row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
+				row.append("='" + ImportFileDirectory + "[" + f + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
 			else:
-				row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
+				row.append("='" + ImportFileDirectory + "[" + f + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
 		rows.append(row)
 
 def Files_Rows_Columns():
 	global rows
 	FileNameList = listdir(ImportFileDirectory)
 	CheckWrongItem(FileNameList)
-	for k in range(0,len(FileNameList)):
-		for i in range(StartCellRow_N,EndCellRow_N):
-			row = [FileNameList[k][:-5]]
-			for j in range(StartCellColumn_N,EndCellColumn_N):
+	for k in range(0, len(FileNameList)):
+		for i in range(StartCellRow_N, EndCellRow_N):
+			row = [f[:-5]]
+			for j in range(StartCellColumn_N, EndCellColumn_N):
 				if StartCellColumn_N <= 25:
-					row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
+					row.append("='" + ImportFileDirectory + "[" + f + "]" + SheetName + "'!$" + str(CellColumnPool[j]) + "$" + str(i+1))
 				else:
-					row.append("='" + ImportFileDirectory + "[" + FileNameList[k] + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
+					row.append("='" + ImportFileDirectory + "[" + f + "]" + SheetName + "'!$" + str(CellColumnPool[j//26 - 1]) + str(CellColumnPool[j%26]) + "$" + str(i+1))
 			rows.append(row)
 
 def CheckWrongItem(Item):
 	WrongItem = []
-	for p in range(0,len(Item)):
+	for p in range(0, len(Item)):
 		if Item[p][-4:] == "xlsx":
 			pass
 		else:
@@ -110,7 +110,7 @@ def ExportExcel(Breakdown):
 	workbook = xlsxwriter.Workbook(ExportFilePath)
 	worksheet = workbook.add_worksheet()
 	for m in range(0,len(Breakdown)):
-		for n in range(0,len(Breakdown[0])):
+		for n in range(0,len(Breakdown[m])):
 			worksheet.write(m,n,Breakdown[m][n])
 	workbook.close()
 
