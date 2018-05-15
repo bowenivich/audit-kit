@@ -8,7 +8,6 @@
 - [Python 的配置](#installation)
 - [Breakdown by Value](#breakdown_value)
 - [Breakdown by Link](#breakdown_link)
-- [Breakdown by Value with Pandas](#breakdown_value_pandas)
 
 <a name="installation"></a>
 ## Python 的配置
@@ -39,7 +38,7 @@
 #### 输入端路径
 * 第一步：输入文件（们）所在目录，可直接从窗口中复制粘贴，务必添加"\\"并以"\\"结尾，例如"C:\Audit\Engagement\\"。
 * 第二步：输入文件名称，原则为"1 or All"。若直接回车，脚本选择目录下所有文件，筛选并爬取后缀为".xlsx"的文件。
-* 注：若经常使用同一路径，则可以编辑.py文件，例如修改第10行：
+* 注：若经常使用同一路径，则可以编辑.py文件，例如修改第11行：
 
 ~~ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))~~
 
@@ -81,31 +80,5 @@ ImportFileDirectory = 'C:\Audit\Engagement\\' （举例）
 * 第八步：输入"输出路径"，务必以".xlsx"结尾，例如"C:\Audit\Engagement\breakdown.xlsx"。
 * 注1：Python 不像 VBA 可直接输入"A1"或"AH1001"来开始与结尾，所以需将字母与数字分开。
 * 注2：此脚本已默认utf-8编码，应该来说运行后中文处理不会存在乱码，若存在乱码请联系作者。
-* 注3：此脚本仅建立 link ，如需爬取 link 请使用 [Breakdown by Value](#breakdown_value) 或 [Breakdown by Value with Pandas](#breakdown_value_pandas)。
+* 注3：此脚本仅建立 link ，如需爬取 link 请使用 [Breakdown by Value](#breakdown_value) 。
 * 注4：通过 Python 处理的 "Paste Link" 回到 Excel 时可能需要更新数值，请选择"更新"。
-
-<a name="breakdown_value_pandas"></a>
-## Breakdown by Value with Pandas
-
-#### 输入端路径
-* 第一步：输入文件（们）所在目录，可直接从窗口中复制粘贴，务必添加"\\"并以"\\"结尾，例如"C:\Audit\Engagement\\"。
-* 第二步：输入文件名称，原则为"1 or All"。若直接回车，脚本选择目录下所有文件，筛选并爬取后缀为".xlsx"的文件。
-* 注：若经常使用同一路径，则可以编辑.py文件，例如修改第10行：
-
-~~ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))~~
-
-ImportFileDirectory = 'C:\Audit\Engagement\\' （举例）
-
-#### 定位
-* 第三步：输入 worksheet 的名字，例如"Sheet1"，请精准输入。
-* 第四步：输入"开始列"，务必为大写的英文字母（例如"A"，若不输入则默认全选有 value 的列）。
-* 第五步：输入"结束列"，务必为大写的英文字母（例如"AH"）。
-* 第六步：输入"开始行"，务必为数字（例如"1"）。
-* 第七步：输入"结束行"，务必为数字（例如"1001"）。
-
-#### 结果输出
-* 第八步：输入"输出路径"，务必以".xlsx"结尾，例如"C:\Audit\Engagement\breakdown.xlsx"。
-* 注1：Python 不像 VBA 可直接输入"A1"或"AH1001"来开始与结尾，所以需将字母与数字分开。
-* 注2：此脚本已默认utf-8编码，应该来说运行后中文处理不会存在乱码，若存在乱码请联系作者。
-* 注3：此脚本用 pandas 包进行爬取，更适合爬取大面积数据，如果仅爬取某格、某行或某列，请使用[Breakdown by Value](#breakdown_value)。
-* 注4：此脚本仅爬取 value ，如需建立 link 请使用 [Breakdown by Link](#breakdown_link)。
