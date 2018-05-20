@@ -4,8 +4,7 @@ from os import listdir
 from multiprocessing import Process, Queue
 
 # define variables
-CellColumnPool = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-finals = []
+CellColumnPool, finals = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', []
 
 # import information
 ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))
@@ -59,9 +58,9 @@ def Selection():
 				ProcessList.append(p)
 				p.start()
 	for p in ProcessList:
-		finals.append(q.get())
-	for p in ProcessList:
 		p.join()
+	for p in ProcessList:
+		finals.append(q.get())
 	if StartCellRow_N + 1 == EndCellRow_N:
 		if StartCellColumn == EndCellColumn:
 			ExportExcel(finals)
@@ -131,7 +130,7 @@ def ExportExcels(Breakdown):
 	for l in range(0,len(Breakdown)):
 		for m in range(0, len(Breakdown[l])):
 			for n in range(0, len(Breakdown[l][m])):
-				worksheet.write(l * len(Breakdown) + m, n, Breakdown[l][m][n])
+				worksheet.write(l * len(Breakdown[l]) + m, n, Breakdown[l][m][n])
 	workbook.close()
 
 # body
