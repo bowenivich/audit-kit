@@ -32,35 +32,36 @@ ExportFilePath = input('Please enter Export File Path: (Directory and Name, Endi
 def Selection():
 	global finals
 	FileNameList = listdir(ImportFileDirectory)
-	CheckWrongItem(FileNameList)
+	FileNameList = [f for f in FileNameList if f[-4:] == 'xlsx']
 	ProcessList = []
 	q = Queue()
 	if StartCellRow_N + 1 == EndCellRow_N:
 		if StartCellColumn == EndCellColumn:
 			for f in FileNameList:
-				p = Process(target=Files_Row_Column, args=(q, f, ImportFileDirectory, SheetName, StartCellRow_N, StartCellColumn_N))
+				p = Process(target = Files_Row_Column, args = (q, f, ImportFileDirectory, SheetName, StartCellRow_N, StartCellColumn_N, ))
 				ProcessList.append(p)
 				p.start()
 		else:
 			for f in FileNameList:
-				p = Process(target=Files_Row_Columns, args=(q, f, ImportFileDirectory, SheetName, StartCellRow_N, StartCellColumn_N, EndCellColumn_N))
+				p = Process(target = Files_Row_Columns, args = (q, f, ImportFileDirectory, SheetName, StartCellRow_N, StartCellColumn_N, EndCellColumn_N, ))
 				ProcessList.append(p)
 				p.start()
 	else:
 		if StartCellColumn == EndCellColumn:
 			for f in FileNameList:
-				p = Process(target=Files_Rows_Column, args=(q, f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, StartCellColumn_N))
+				p = Process(target = Files_Rows_Column, args = (q, f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, StartCellColumn_N, ))
 				ProcessList.append(p)
 				p.start()
 		else:
 			for f in FileNameList:
-				p = Process(target=Files_Rows_Columns, args=(q, f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, StartCellColumn_N, EndCellColumn_N))
+				print(f)
+				p = Process(target = Files_Rows_Columns, args = (q, f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, StartCellColumn_N, EndCellColumn_N, ))
 				ProcessList.append(p)
 				p.start()
 	for p in ProcessList:
-		p.join()
-	for p in ProcessList:
 		finals.append(q.get())
+	for p in ProcessList:
+		p.join()
 	if StartCellRow_N + 1 == EndCellRow_N:
 		if StartCellColumn == EndCellColumn:
 			ExportExcel(finals)
@@ -97,24 +98,17 @@ def Files_Rows_Column(q, f, ImportFileDirectory, SheetName, StartCellRow_N, EndC
 
 def Files_Rows_Columns(q, f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, StartCellColumn_N, EndCellColumn_N):
 	result = []
-	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f, encoding_override='utf-8')
+	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f, encoding_override = 'utf-8')
 	Sheet = ExcelFile.sheet_by_name(SheetName)
 	for Row in range(StartCellRow_N, EndCellRow_N):
 		row = [f]
 		for Column in range(StartCellColumn_N, EndCellColumn_N):
-			row.append(Sheet.cell_value(Row, Column))
+			try:
+				row.append(Sheet.cell_value(Row, Column))
+			except:
+				row.append('')
 		result.append(row)
 	q.put(result)
-
-def CheckWrongItem(Item):
-	WrongItem = []
-	for p in range(0, len(Item)):
-		if Item[p][-4:] == 'xlsx':
-			pass
-		else:
-			WrongItem.append(p)
-	for q in range(0, len(WrongItem)):
-		Item.remove(Item[q])
 
 def ExportExcel(Breakdown):
 	workbook = xlsxwriter.Workbook(ExportFilePath)
@@ -127,7 +121,7 @@ def ExportExcel(Breakdown):
 def ExportExcels(Breakdown):
 	workbook = xlsxwriter.Workbook(ExportFilePath)
 	worksheet = workbook.add_worksheet()
-	for l in range(0,len(Breakdown)):
+	for l in range(0, len(Breakdown)):
 		for m in range(0, len(Breakdown[l])):
 			for n in range(0, len(Breakdown[l][m])):
 				worksheet.write(l * len(Breakdown[l]) + m, n, Breakdown[l][m][n])
