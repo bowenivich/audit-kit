@@ -54,7 +54,6 @@ def Selection():
 				p.start()
 		else:
 			for f in FileNameList:
-				print(f)
 				p = Process(target = Files_Rows_Columns, args = (q, f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, StartCellColumn_N, EndCellColumn_N, ))
 				ProcessList.append(p)
 				p.start()
@@ -75,14 +74,14 @@ def Selection():
 
 def Files_Row_Column(q, f, ImportFileDirectory, SheetName, i, j):
 	result = [f]
-	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f)
+	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f, encoding_override = 'utf-8')
 	Sheet = ExcelFile.sheet_by_name(SheetName)
 	result.append(Sheet.cell_value(i, j))
 	q.put(result)
 
 def Files_Row_Columns(q, f, ImportFileDirectory, SheetName, i, StartCellColumn_N, EndCellColumn_N):
 	result = [f]
-	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f)
+	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f, encoding_override = 'utf-8')
 	Sheet = ExcelFile.sheet_by_name(SheetName)
 	for Column in range(StartCellColumn_N, EndCellColumn_N):
 		result.append(Sheet.cell_value(i, Column))
@@ -90,7 +89,7 @@ def Files_Row_Columns(q, f, ImportFileDirectory, SheetName, i, StartCellColumn_N
 
 def Files_Rows_Column(q, f, ImportFileDirectory, SheetName, StartCellRow_N, EndCellRow_N, j):
 	result = [f]
-	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f)
+	ExcelFile = xlrd.open_workbook(ImportFileDirectory + f, encoding_override = 'utf-8')
 	Sheet = ExcelFile.sheet_by_name(SheetName)
 	for Row in range(StartCellRow_N, EndCellRow_N):
 		result.append(Sheet.cell_value(Row, j))
