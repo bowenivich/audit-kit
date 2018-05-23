@@ -1,38 +1,15 @@
 # -*- coding: utf-8 -*-
 import xlrd, xlsxwriter
 from os import listdir
-from multiprocessing import Process, Queue
+from multiprocessing import Process, Queue, freeze_support
 
 # define variables
 CellColumnPool, finals = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', []
 
-# import information
-ImportFileDirectory = str(input(r'''Please enter Import File Directory: (eg. "C:\Users\Alfred.Feng\Desktop\") '''))
-SheetName = str(input('Please enter Sheet Name: (eg. Sheet1) '))
-StartCellColumn = str(input('Please enter Start Cell Column: (eg. A) '))
-if len(StartCellColumn) == 1:
-	StartCellColumn_N = CellColumnPool.index(StartCellColumn)
-elif len(StartCellColumn) == 2:
-	StartCellColumn_N = (CellColumnPool.index(StartCellColumn[0]) + 1) * 26 + CellColumnPool.index(StartCellColumn[1])
-else:
-	print('Not Supported')
-StartCellRow_N = input('Please enter Start Cell Row: (eg. 1) ')
-StartCellRow_N = int(StartCellRow_N) - 1
-EndCellColumn = str(input('Please enter End Cell Column: (eg. E) '))
-if len(EndCellColumn) == 1:
-	EndCellColumn_N = CellColumnPool.index(EndCellColumn) + 1
-elif len(EndCellColumn) == 2:
-	EndCellColumn_N = (CellColumnPool.index(EndCellColumn[0]) + 1) * 26 + CellColumnPool.index(EndCellColumn[1]) + 1
-else:
-	print('Not Supported')
-EndCellRow_N = input('Please enter End Cell Row: (eg. 99) ')
-EndCellRow_N = int(EndCellRow_N)
-ExportFilePath = input('Please enter Export File Path: (Directory and Name, Ending with .xlsx) ')
-
 def Selection():
 	global finals
 	FileNameList = listdir(ImportFileDirectory)
-	FileNameList = [f for f in FileNameList if f[-4:] == 'xlsx']
+	FileNameList = [f for f in FileNameList if f[-4:] == 'xlsx' and f[:2] != '._']
 	ProcessList = []
 	q = Queue()
 	if StartCellRow_N + 1 == EndCellRow_N:
@@ -126,5 +103,29 @@ def ExportExcels(Breakdown):
 				worksheet.write(l * len(Breakdown[l]) + m, n, Breakdown[l][m][n])
 	workbook.close()
 
-# body
-Selection()
+if __name__ == '__main__':
+	freeze_support()
+	# import information
+	ImportFileDirectory = str(input(r'''Please enter File(s) Directory and end with "\": (eg. "C:\Users\Alfred.Feng\Engagement\") '''))
+	SheetName = str(input('Please enter Sheet Name: (eg. E1_应收账款) '))
+	StartCellColumn = str(input('Please enter Start Cell Column: (eg. A) '))
+	if len(StartCellColumn) == 1:
+		StartCellColumn_N = CellColumnPool.index(StartCellColumn)
+	elif len(StartCellColumn) == 2:
+		StartCellColumn_N = (CellColumnPool.index(StartCellColumn[0]) + 1) * 26 + CellColumnPool.index(StartCellColumn[1])
+	else:
+		print('Not Supported')
+	StartCellRow_N = input('Please enter Start Cell Row: (eg. 1) ')
+	StartCellRow_N = int(StartCellRow_N) - 1
+	EndCellColumn = str(input('Please enter End Cell Column: (eg. E) '))
+	if len(EndCellColumn) == 1:
+		EndCellColumn_N = CellColumnPool.index(EndCellColumn) + 1
+	elif len(EndCellColumn) == 2:
+		EndCellColumn_N = (CellColumnPool.index(EndCellColumn[0]) + 1) * 26 + CellColumnPool.index(EndCellColumn[1]) + 1
+	else:
+		print('Not Supported')
+	EndCellRow_N = input('Please enter End Cell Row: (eg. 99) ')
+	EndCellRow_N = int(EndCellRow_N)
+	ExportFilePath = input('Please enter Export File Path: (Directory and Name, Ending with .xlsx) ')
+	# body
+	Selection()
