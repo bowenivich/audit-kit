@@ -136,48 +136,51 @@ if __name__ == '__main__':
 	# UI
 	root = Tk()
 	root.title('Breakdown by Value')
-	# ImportFileDirectory
-	l_di = Label(root, text=r'Directory (end with "\"): ')
-	l_di.grid(row=0, sticky=W)
-	e_di = Entry(root, width=50)
-	e_di.grid(row=0, column=1, sticky=E)
-	# SheetName
-	l_sn = Label(root, text=r'Sheet Name: ')
-	l_sn.grid(row=1, sticky=W)
-	e_sn = Entry(root, width=50)
-	e_sn.grid(row=1, column=1, sticky=E)
-	# StartCellColumn
-	l_sc = Label(root, text=r'Start Column (eg. A): ')
-	l_sc.grid(row=2, sticky=W)
-	e_sc = Entry(root, width=50)
-	e_sc.grid(row=2, column=1, sticky=E)
-	# StartCellRow
-	l_sr = Label(root, text=r'Start Row (eg. 1): ')
-	l_sr.grid(row=3, sticky=W)
-	e_sr = Entry(root, width=50)
-	e_sr.grid(row=3, column=1, sticky=E)
-	# EndCellColumn
-	l_ec = Label(root, text=r'End Column (eg. ZZ): ')
-	l_ec.grid(row=4, sticky=W)
-	e_ec = Entry(root, width=50)
-	e_ec.grid(row=4, column=1, sticky=E)
-	# EndCellRow
-	l_er = Label(root, text=r'End Row (eg. 99): ')
-	l_er.grid(row=5, sticky=W)
-	e_er = Entry(root, width=50)
-	e_er.grid(row=5, column=1, sticky=E)
-	# ExportFilePath
-	l_rp = Label(root, text=r'Result Path (end with ".xlsx"): ')
-	l_rp.grid(row=6, sticky=W)
-	e_rp = Entry(root, width=50)
-	e_rp.grid(row=6, column=1, sticky=E)
 	# Blank
 	l_bnk = Label(root, text='')
-	l_bnk.grid(row=7, columnspan=2)	
+	l_bnk.grid(row=0, columnspan=2)	
+	# ImportFileDirectory
+	l_di = Label(root, text=r'Directory (end with "\"): ')
+	l_di.grid(row=1, sticky=W)
+	e_di = Entry(root, width=50)
+	e_di.grid(row=1, column=1, sticky=E)
+	# SheetName
+	l_sn = Label(root, text=r'Sheet Name: ')
+	l_sn.grid(row=2, sticky=W)
+	e_sn = Entry(root, width=50)
+	e_sn.grid(row=2, column=1, sticky=E)
+	# StartCellColumn
+	l_sc = Label(root, text=r'Start Column (eg. A): ')
+	l_sc.grid(row=3, sticky=W)
+	e_sc = Entry(root, width=50)
+	e_sc.grid(row=3, column=1, sticky=E)
+	# StartCellRow
+	l_sr = Label(root, text=r'Start Row (eg. 1): ')
+	l_sr.grid(row=4, sticky=W)
+	e_sr = Entry(root, width=50)
+	e_sr.grid(row=4, column=1, sticky=E)
+	# EndCellColumn
+	l_ec = Label(root, text=r'End Column (eg. ZZ): ')
+	l_ec.grid(row=5, sticky=W)
+	e_ec = Entry(root, width=50)
+	e_ec.grid(row=5, column=1, sticky=E)
+	# EndCellRow
+	l_er = Label(root, text=r'End Row (eg. 99): ')
+	l_er.grid(row=6, sticky=W)
+	e_er = Entry(root, width=50)
+	e_er.grid(row=6, column=1, sticky=E)
+	# ExportFilePath
+	l_rp = Label(root, text=r'Result Path (end with ".xlsx"): ')
+	l_rp.grid(row=7, sticky=W)
+	e_rp = Entry(root, width=50)
+	e_rp.grid(row=7, column=1, sticky=E)
+	# Blank
+	l_bnk = Label(root, text='')
+	l_bnk.grid(row=8, columnspan=2)	
 	# Execute
 	b_ex = Button(root, text='Execute', command=Execute, width=25)
-	b_ex.grid(row=8, columnspan=2)
+	b_ex.grid(row=9, columnspan=2)
 	# Result
 	l_msg = Label(root, text='')
-	l_msg.grid(row=9, columnspan=2)	
+	l_msg.grid(row=10, columnspan=2)	
 	root.mainloop()
