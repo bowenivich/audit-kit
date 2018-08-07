@@ -11,7 +11,7 @@
 
 ### Breakdown by Value
 打开.exe应用程序会首先打开终端，终端会打开一个窗口。在使用的过程中，请勿关闭终端。程序执行结束后，在"Execute"按钮下会出现"Completed"或"Error"以表示此程序是否正常运行完成。
-![Breakdown By Value](/sources/breakdown-by-value.png)
+![Breakdown By Value](/sources/README/breakdown-by-value.png)
 
 在点击"Execute"按钮前，请先输入各项配置。例如：
 ```
@@ -26,7 +26,7 @@ C:\Users\Alfred.Feng\Desktop\result.xlsx
 
 ### Breakdown by Link
 打开.exe应用程序会首先打开终端，终端会打开一个窗口。在使用的过程中，请勿关闭终端。程序执行后，在"Execute"按钮下会出现"Completed"或"Error"以表示此程序是否正常运行完成。
-![Breakdown By Link](/sources/breakdown-by-link.png)
+![Breakdown By Link](/sources/README/breakdown-by-link.png)
 
 在点击"Execute"按钮前，请先输入各项配置。例如：
 ```
