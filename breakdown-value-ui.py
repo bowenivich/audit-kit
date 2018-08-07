@@ -34,11 +34,10 @@ def Execute():
 	except:
 		l_msg['text'] = 'Error'
 
-
 def Selection():
-	global finals
+	global ImportFileDirectory, finals
 	FileNameList = listdir(ImportFileDirectory)
-	FileNameList = [f for f in FileNameList if f[-4:] == 'xlsx' and f[:2] != '._']
+	FileNameList = [f for f in FileNameList if ((f[-4:] == 'xlsx') and (f[:2] != '._') and (f[:2] != '~$'))]
 	ProcessList = []
 	q = Queue()
 	if StartCellRow_N + 1 == EndCellRow_N:
