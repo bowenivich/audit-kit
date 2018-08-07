@@ -67,7 +67,7 @@ C:\Users\Alfred.Feng\Desktop\result.xlsx
 - 2. 此程序将严格按照文件名来排序，生成的图片信息排序与文件名排序严格一致。iOS的相机会自动对图片编号（例如"IMG_1001.JPG"），可直接全部放入文件夹。
 
 - 3. 以运行文件，可直接双击.exe的应用程序。
-![VAT Invoices Scanning]
+![VAT Invoices Scanning](/sources/README/vat-invoices-scanning-ui.png)
 
 - 4. 请在文本框输入各项配置。例如：
 ```
