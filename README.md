@@ -85,7 +85,3 @@ C:\Users\Alfred.Feng\Desktop\result.xlsx
 ## 未来将开展的项目
 - 运用LATEX，根据.xlsx文件中的内容，自动生成律师询证函及相关底稿。
 - ......
-
-pyinstaller -w -F --i="D:\Projects\pyinstaller\ico.ico" --add-binary "C:\Program Files\Pytho
-n36\Lib\site-packages\pyzbar\libiconv.dll;." --add-binary "C:\Program Files\Python36\Lib\site-packages\pyzbar\libzbar-64
-.dll;." D:\Projects\pyinstaller\VAT-Invoices-Scanning-UI.py
