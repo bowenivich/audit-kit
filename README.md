@@ -1,5 +1,5 @@
 # Audit Kit
-一些Audit小工具，代码可直接下载，具有图形界面的App可在[发表页面](https://github.com/bowenfenghub/audit-kit/releases)下载。慢慢更新，如有Python脚本的需求 :+1: 以及改进意见 :-1:，请联系作者[@bowenfenghub](https://github.com/bowenfenghub)，邮箱是[bowenfeng8@gmail.com](mailto:bowenfeng8@gmail.com)。
+一些Audit小工具，代码可直接下载，具有图形界面的App可在[发表页面](https://github.com/bowenbfeng/audit-kit/releases)下载。慢慢更新，如有Python脚本的需求 :+1: 以及改进意见 :-1:，请联系作者[@bowenbfeng](https://github.com/bowenbfeng)，邮箱是[bowen.b.feng@gmail.com](mailto:bowen.b.feng@gmail.com)。
 
 ## Breakdown 爬取
 由于通过VBA爬客编表选定内容的效率较低，导致公司电脑在爬表过程中死机而影响工作，此audit-kit基于Python的App根据`ABASToolkit.xlam`爬表思路编写，在爬取上百份客编表中的部分内容时，效率将远高于VBA。
