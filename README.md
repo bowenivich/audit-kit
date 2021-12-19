@@ -52,7 +52,7 @@ C:\Users\Alfred.Feng\Desktop\result.xlsx
 
 - 5. 程序执行结束后，在"Execute"按钮下方会出现"Completed"或"Error"以表示此程序是否正常运行完成（通常此过程可极快得完成）。
 
-- 6. 在生成的.xlsx文件中，如果出现`#REF`的现象，复制、以Transpose模式粘贴即可生效。若对此步骤有疑问，请直接联系[Alfred Feng](mailto:alfred.bowenfeng@gmail.com)。
+- 6. 在生成的.xlsx文件中，如果出现`#REF`的现象，复制、以Transpose模式粘贴即可生效。若对此步骤有疑问，请直接联系作者。
 
 ### Future Updates
 - 同名目标文件覆盖提示：目前"Result Path"重名时会直接覆盖旧文件。
